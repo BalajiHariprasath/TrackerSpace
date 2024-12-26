@@ -1,0 +1,130 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.task {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.subtask {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.subtask:hover {
+  background-color: #f1f1f1;
+}
+.not-started {
+  border-left: 5px solid #ff0000;
+}
+.started {
+  border-left: 5px solid #28a745;
+}
+.work-in-progress {
+  border-left: 5px solid #ffc107;
+}
+.completed {
+  border-left: 5px solid #007bff;
+}
+.status-bar {
+  height: 100%;
+  width: 0;
+  background-color: #007bff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.3s;
+  z-index: -1;
+}
+.subtask.not-started .status-bar {
+  background-color: #ff0000;
+  width: 25%;
+}
+.subtask.started .status-bar {
+  background-color: #28a745;
+  width: 50%;
+}
+.subtask.work-in-progress .status-bar {
+  background-color: #ffc107;
+  width: 75%;
+}
+.subtask.completed .status-bar {
+  background-color: #007bff;
+  width: 100%;
+}
+.status-text {
+  z-index: 1;
+}
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+button.complete {
+  background-color: #007bff;
+  color: #fff;
+}
+button.complete:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.toggle-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+}
+.popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 20px;
+  z-index: 1000;
+}
+.popup-overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .subtask {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .subtask span, .subtask select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
